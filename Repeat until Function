@@ -1,0 +1,47 @@
+
+
+# Repeat until Function
+
+
+activate application "Evernote"
+tell application "System Events"
+
+    # Open the print dialog
+    keystroke "p" using command down
+
+    # Wait until the Print dialog opens before proceeding
+    repeat until window "Print" of process "Evernote" exists
+    end repeat
+
+    click menu button "PDF" of window "Print" of process "Evernote"
+
+    # Wait until the Menu button menu is created before proceeding
+    repeat until exists menu item "Save as PDF…" of menu 1 of menu button "PDF" of window "Print" of process "Evernote"
+    end repeat
+
+    # Select the "Save as PDF" menu item
+    click menu item "Save as PDF…" of menu 1 of menu button "PDF" of window "Print" of process "Evernote"
+
+    # Wait until the Save dialog opens before proceeding
+    repeat until exists window "Save" of process "Evernote"
+    end repeat
+
+    set theDate to current date
+
+    #tell (current date) to get (it's month as integer) & "-" & day & "-" & (it's year as integer)
+    #set the clipboard to result as text
+
+    #set myDate to result as text
+    #set the clipboard to "dog" as text
+    #if (get (the clipboard) is not "") then
+    #set value of text field 1 of sheet "Save" of process "Evernote" to get (the clipboard) & ".pdf"
+    #end if
+
+    set value of text field of sheet "Save" of process "Evernote" to "dog" & ".pdf"
+    # Paste the contents of the clipboard in and Save
+    # This is sorta hack; Probably best to leave the 'Save As" dialog open and let the user finish it off but I have a special purpose
+
+    # click button "Save" of window "Save" of process "Evernote"
+
+
+end tell
