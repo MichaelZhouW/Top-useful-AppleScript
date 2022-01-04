@@ -1,6 +1,7 @@
 
 
 # Repeat until Function
+# Waiting until a window exists in Applescript
 
 
 activate application "Evernote"
